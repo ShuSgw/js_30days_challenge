@@ -5,12 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <h1>Day 1</h1>
-    <p>hello world</p>
+    <div>
+        <p id="showKey">KeyCode</p>
+        <div data-key="a" class="key">
+            <kbd>A</kbd>
+            <span class="sound">boom</span>
+        </div>
+        <div data-key="w" class="key">
+            <kbd>W</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="s" class="key">
+            <kbd>S</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="z" class="key">
+            <kbd>Z</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="e" class="key">
+            <kbd>E</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="d" class="key">
+            <kbd>D</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="x" class="key">
+            <kbd>X</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="c" class="key">
+            <kbd>C</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="f" class="key">
+            <kbd>F</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <audio data-key="a" src="./sounds/boom.wav"></audio>
+        <audio data-key="w" src="./sounds/clap.wav"></audio>
+        <audio data-key="s" src="./sounds/hihat.wav"></audio>
+        <audio data-key="z" src="./sounds/kick.wav"></audio>
+        <audio data-key="e" src="./sounds/openhat.wav"></audio>
+        <audio data-key="d" src="./sounds/ride.wav"></audio>
+        <audio data-key="x" src="./sounds/snare.wav"></audio>
+        <audio data-key="c" src="./sounds/tink.wav"></audio>
+        <audio data-key="f" src="./sounds/tom.wav"></audio>
+    </div>
+    <script>
+        window.addEventListener("keydown", function (e) {
+            // console.log(e);
+            // to show keycode and key
+            const showKey = document.querySelector("#showKey");
+            showKey.innerHTML = e.keyCode + " " + e.key;
+
+            const audio = document.querySelector(`audio[data-key=${e.key}]`);
+            const key = document.querySelector(`.key[data-key=${e.key}]`);
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add("playing")
+            console.log(audio);
+            console.log(key);
+        })
+    </script>
 </body>
 
 </html>
