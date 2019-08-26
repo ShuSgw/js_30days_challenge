@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "sass": "node-sass --include-path scss styles/main.scss styles/style.css -w",
-        "browse": "browser-sync start --server --files *",
+        "browse": "browser-sync start --server --files * --https true",
         "dev": "run-p sass browse"
     },
     "author": "",
